@@ -1,7 +1,7 @@
 ## What is ssh-watcher:
 
 simple backround shell script that watches for ssh login and logout. <br>
-soon will also watch for failed login attemps, <br>
+soon will also watch for failed login attemps. <br>
 
 <br>
 
@@ -16,7 +16,7 @@ you can also make this automatically run on start up. <br>
 ## How to install:
 
 just put the whatever directory you like, probability best in you home directory. <br>
-then run it, `./ssh-watcher.sh` <br>
+then run it! `./ssh-watcher.sh` <br>
 
 <br>
 
