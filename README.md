@@ -1,6 +1,6 @@
 ## What is ssh-watcher:
 
-simple backround shell script that watches for ssh login and logout. <br>
+simple background shell script that watches for ssh login and logout. <br>
 soon will also watch for failed login attemps. <br>
 
 <br>
