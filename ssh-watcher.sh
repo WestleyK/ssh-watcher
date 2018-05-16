@@ -1,16 +1,15 @@
 #!/bin/bash
 
 # https://github.com/WestleyK/ssh-watcher
-# created by Westley
+# created by Westley K
 # email westley@sylabs.io
-# date code created 1806
-# updated on 1819
-# updaded date May 11, 2018
-# version 1.0
+# date created February 2, 2018
+# updaded date May 16, 2018
+# version 1.1
 
 
-
-run=$( ps aux | grep ssh_watcher.sh | wc -l )
+# check if the script is running
+run=$( ps aux | grep ssh-watcher.sh | wc -l )
 if [[ $run -ge "4" ]]; then
 	exit
 fi
@@ -20,13 +19,12 @@ reset=0
 check_login=$( cat /var/log/auth.log | grep -a New | wc -l )
 check_logout=$( cat /var/log/auth.log | grep -a Removed | wc -l )
 
-
 c_login=$check_login
 c_logout=$check_logout
 
 
 while true; do
-
+	# kinda a silly way of doing this, but it works :)
 	check_login=$( cat /var/log/auth.log | grep -a New | wc -l )
 	check_logout=$( cat /var/log/auth.log | grep -a Removed | wc -l )
 	
@@ -36,7 +34,7 @@ while true; do
 		reset=0
 	fi
 
-
+	# check the log every 5 seconds
 	sleep 5s
 
 	let "n_login = $check_login - $c_login"
@@ -49,7 +47,6 @@ while true; do
 	if [[ $n_logout -ge "1" ]]; then
 		reset=2
 	fi
-
 
 
 	if [[ $reset == "1" ]]; then
