@@ -4,8 +4,8 @@
 # created by Westley K
 # email westley@sylabs.io
 # date created February 2, 2018
-# updaded date May 18, 2018
-# version 1.2
+# updaded date May 16, 2018
+# version 1.1
 
 
 # check if the script is running
@@ -18,22 +18,19 @@ reset=0
 
 check_login=$( cat /var/log/auth.log | grep -a New | wc -l )
 check_logout=$( cat /var/log/auth.log | grep -a Removed | wc -l )
-check_failed=$( cat /var/log/auth.log | grep -a authentication\ failure | wc -l )
 
 c_login=$check_login
 c_logout=$check_logout
-c_failed=$check_failed
+
 
 while true; do
 	# kinda a silly way of doing this, but it works :)
 	check_login=$( cat /var/log/auth.log | grep -a New | wc -l )
 	check_logout=$( cat /var/log/auth.log | grep -a Removed | wc -l )
-	check_failed=$( cat /var/log/auth.log | grep -a authentication\ failure | wc -l )
 	
 	if [[ $reset == "10" ]]; then
 		c_login=$check_login
 		c_logout=$check_logout
-		c_failed=$check_failed
 		reset=0
 	fi
 
@@ -42,16 +39,13 @@ while true; do
 
 	let "n_login = $check_login - $c_login"
 	let "n_logout = $check_logout - $c_logout"
-	let "n_failed = $check_failed - $c_failed"
 	
 	if [[ $n_login -ge "1" ]]; then
 		reset=1
 	fi
+
 	if [[ $n_logout -ge "1" ]]; then
 		reset=2
-	fi
-	if [[ $n_failed -ge "1" ]]; then
-		reset=3
 	fi
 
 
@@ -63,12 +57,6 @@ while true; do
 	if [[ $reset == "2" ]]; then
 		xmessage "someone just stoped ssh-ing you device, you must be safe now." &> /dev/null
 		reset=10
-	fi
-
-	if [[ $reset == "3" ]]; then 
-		xmessage "Someone is trying to login to your device, \n there ip address: $hack_ip" &> /dev/null
-		reset=10
-		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
 	fi
 
 
