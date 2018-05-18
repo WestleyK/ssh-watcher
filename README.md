@@ -18,6 +18,14 @@ You can also make this automatically run on start up. <br>
 Just put the whatever directory you like, probability best in you home directory, <br>
 then run it! `./ssh-watcher.sh` <br>
 If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh &`. <br>
+<br>
+To make it run on boot or startup for raspberry pi, open a terminal and type <br>
+`vim ~/.bashrc` <br>
+
+then at the top, or the bottom, write <br>
+`./ssh-watcher.sh &` <br>
+save and exit then you done! <br>
+this should work for the latest version of Raspbian. <br>
 
 <br>
 
