@@ -21,6 +21,7 @@ If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh
 
 <br>
 
+**note:** You can find older versions in the `previous-versions` folder. <br>
 
 ## ChangeLog:
 
