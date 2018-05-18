@@ -21,3 +21,17 @@ If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh
 
 <br>
 
+
+## ChangeLog:
+
+### --version-1.1-- May 16, 2018
+
+name change and better layout <br>
+<br>
+
+### --version-1.0-- May 11, 2018
+
+initial release <br>
+
+<br>
+
