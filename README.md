@@ -21,13 +21,14 @@ If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh
 <br>
 To make it run on boot or startup for raspberry pi, open a terminal and type <br>
 `vim ~/.bashrc` <br>
-
 then at the top, or the bottom, write <br>
 `./ssh-watcher.sh &` <br>
 save and exit then you done! <br>
 this should work for the latest version of Raspbian. <br>
 
 <br>
+
+---
 
 **note:** You can find older versions in the `previous-versions` folder. <br>
 
