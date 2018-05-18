@@ -56,19 +56,20 @@ while true; do
 
 
 	if [[ $reset == "1" ]]; then
-		xmessage "someone just ssh your divice, you should do somthing!" &> /dev/null
+		xmessage -center "someone just ssh your divice, you should do somthing!" &> /dev/null
 		reset=10
 	fi
 
 	if [[ $reset == "2" ]]; then
-		xmessage "someone just stoped ssh-ing you device, you must be safe now." &> /dev/null
+		xmessage -center "someone just stoped ssh-ing you device, you must be safe now." &> /dev/null
 		reset=10
 	fi
 
 	if [[ $reset == "3" ]]; then 
-		xmessage "Someone is trying to login to your device, \n there ip address: $hack_ip" &> /dev/null
-		reset=10
 		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		echo -e "Someone is trying to login to your device, \nthere ip address:$hack_ip" | xmessage -center -file - &> /dev/null
+		reset=10
+
 	fi
 
 
