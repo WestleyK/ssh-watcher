@@ -22,7 +22,7 @@ If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh
 To make it run on boot or startup for raspberry pi, open a terminal and type <br>
 `vim ~/.bashrc` <br>
 then, at the top, or the bottom, write <br>
-`./ssh-watcher.sh &` <br>
+`./ssh-watcher.sh &> /dev/null &` <br>
 save and exit then you done! <br>
 Make sure you script is in your home directory, or include a path to it. <br>
 this should work for the latest version of Raspbian. <br>
