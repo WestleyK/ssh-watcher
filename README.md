@@ -1,7 +1,7 @@
 ## What is ssh-watcher:
 
 A simple background shell script that watches for ssh activities and alerts you via xmessage. <br>
-This includes: ssh login, logout and failed login attemps. <br>
+Activities includes: ssh login, logout and failed login attemps. <br>
 
 <br>
 
