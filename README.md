@@ -11,7 +11,7 @@ Ssh watcher simply watches your `/var/log/auth.log`. <br>
 It's desined and tested on raspberry pi, but may be able to run on other os's. <br>
 
 You can also make this automatically run on start up,
-[for raspberry pi](#To-make-it-run-on-boot-or-startup-for-raspberry-pi:). <br>
+[for raspberry pi](#to-make-it-run-on-boot-or-startup-for-raspberry-pi). <br>
 
 <br>
 
