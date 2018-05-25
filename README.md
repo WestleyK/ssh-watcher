@@ -45,19 +45,18 @@ this should work for the latest version of Raspbian. <br>
 ### --version-1.2-- May 18, 2018
 
 now watches for failed login attemps <br>
-
+<br>
 
 ### --version-1.1-- May 16, 2018
 
 name change and better layout <br>
-
+<br>
 
 ### --version-1.0-- May 11, 2018
 
 initial release <br>
-
-
 <br>
+
 
 ## End ChangeLog
 
