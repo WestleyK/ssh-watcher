@@ -15,7 +15,7 @@ You can also make this automatically run on start up. <br>
 
 ## How to install:
 
-Just put the whatever directory you like, probability best in you home directory, <br>
+Just put the `ssh-watcher.sh` in whatever directory you like, probability best in you home directory, <br>
 then run it! `./ssh-watcher.sh` <br>
 If you don't want your terminal to be busy running it, then do `./ssh-watcher.sh &`. <br>
 <br>
