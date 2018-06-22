@@ -23,45 +23,35 @@ if [[ -n $option ]]; then
 	-h | -help)
 			echo "usage: ./ssh-watcher-cli-v1.0.sh [-option]
 	-h | -help | --help (display help menu)
-	-c (clear terminal before running script)
+	-c | -check (check and test mode) (comming soon!)
+	-l (clear terminal before running script)
 	-o | -i (dont ALERT for logout)
 	-R (reboot this divice when ssh login or login attempt) (comming soon)"
 		exit
 		;;
-	*c*)
-		clear
-		echo "running ssh-watcher-cli-v1.0.sh"
+	-c | -check)
+		echo "this feature is comming soon! :P"
+		exit
 		;;
-	*o*)
+	*l*)
+		clear
+		echo "running ssh-watcher-cli-v1.0.sh" 
+		;&
+	*o* | *i*)
 		no_logout=$"true"
-		echo no_input
+		;;
+	*R*)
+		echo "2this feature is comming soon! :P"
+		exit 
 		;;
 	*)
-		echo "option not found, try: ./ssh-watcher-cli-v1.0.sh -h"
+		echo "option not found, try: ./ssh-watcher-cli-v1.0.sh -help"
 		exit
 		;;
 	
 	esac
 fi
-		
 
-
-#option=$1
-#if [[ $option = *"h"* || $option = "help" ]]; then 
-#	echo "usage: ./ssh-watcher-cli-v1.0.sh [-option]
-#	-h | -help | --help (display help menu)
-#	-c (clear terminal before running script)
-#	-o | -i (dont ALERT for logout)
-#	-R (reboot this divice when ssh login or login attempt) (comming soon)"
-#	exit
-#elif [[ $option = *"c"* ]]; then
-#	clear
-#	echo "running ssh-watcher-cli-v1.0.sh"
-#elif [[ $option = *"o"* || $option = *"i"* ]]; then 
-#	no_logout=$"true"
-#else
-#	echo "usseage"
-#fi
 
 
 reset=0
