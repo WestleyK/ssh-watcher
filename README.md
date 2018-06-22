@@ -35,7 +35,7 @@ To run it, you can do `./ssh-watcher-cli-vX.X.sh`, and you can do `./ssh-watcher
 There are two difrent scripts, the `ssh-watcher-gui-vX.X.sh` if for raspberry pi's with a GUI and display, <br>
 and the `ssh-watcher-cli-vX.X.sh` is for raspberry pi's without a GUI or display. <br>
 <br>
-**Note:** the gui script alerts via xmessage, and the cli script alerts thrught the terminal that ran it. <br>
+**Note:** the gui script alerts via xmessage, and the cli script alerts thrught the terminal thats running it. <br>
 <br>
 
 
