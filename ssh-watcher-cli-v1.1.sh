@@ -24,12 +24,16 @@ if [[ -n $option ]]; then
 			echo "usage: ./ssh-watcher-cli-v1.1.sh [-option]
 	-h | -help | --help (display help menu)
 	-c | -check (check and test mode) (comming soon!)
-	-k (stop and kill all running ssh-watcher-cli-vX.X.sh script
+	-k (stop and kill all running ssh-watcher-cli-vX.X.sh script) (comming soon!)
 	-l (clear terminal before running script)
 	-o (dont ALERT for logout)"
 		exit
 		;;
 	-c | -check)
+		echo "this feature is comming soon! :P"
+		exit
+		;;
+	-k)
 		echo "this feature is comming soon! :P"
 		exit
 		;;
@@ -41,7 +45,7 @@ if [[ -n $option ]]; then
 		no_logout=$"true"
 		;;
 	-R)
-		echo "2this feature is comming soon! :P"
+		echo "this feature is comming soon! :P"
 		exit 
 		;;
 	*)
