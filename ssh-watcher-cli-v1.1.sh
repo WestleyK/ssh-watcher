@@ -11,7 +11,7 @@
 
 # check if the script is running
 run=$( ps aux | grep ssh-watcher-cli-v1.1.sh | wc -l )
-if [[ $run -ge "2" ]]; then
+if [[ $run -ge "4" ]]; then
 	echo "script already running!"
 	echo "try: ps aux | grep ssh-watcher-cli-v1.1.sh"
 	exit
