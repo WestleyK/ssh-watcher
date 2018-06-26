@@ -10,7 +10,7 @@
 
 # check if the script is running
 run=$( ps aux | grep ssh-watcher-gui-v1.4.sh | wc -l )
-if [[ $run -ge "2" ]]; then
+if [[ $run -ge "4" ]]; then
 	exit
 fi
 
