@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # https://github.com/WestleyK/ssh-watcher
-# created by Westley K
-# email westley@sylabs.io
-# date created February 2, 2018
-# updaded date May 18, 2018
-# version 1.2
+# created by: Westley K
+# email: westley@sylabs.io
+# date created: February 2, 2018
+# updaded date: Jun 25, 2018
+# version-1.4
 
 
 # check if the script is running
-run=$( ps aux | grep ssh-watcher.sh | wc -l )
-if [[ $run -ge "4" ]]; then
+run=$( ps aux | grep ssh-watcher-gui-v1.4.sh | wc -l )
+if [[ $run -ge "2" ]]; then
 	exit
 fi
 
@@ -54,20 +54,26 @@ while true; do
 		reset=3
 	fi
 
-
+	
+	# you can modify this to do somthing if someone ssh your divice
 	if [[ $reset == "1" ]]; then
-		xmessage -center "someone just ssh your divice, you should do somthing!" &> /dev/null
+		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		echo -e "Someone just ssh your divice, you should do somthing! \nthere ip address:$hack_ip" | xmessage -center -file - &> /dev/null
+		# your command here
 		reset=10
 	fi
 
 	if [[ $reset == "2" ]]; then
-		xmessage -center "someone just stoped ssh-ing you device, you must be safe now." &> /dev/null
+		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		echo -e "Someone just stoped ssh-ing you device, you must be safe now, \nthere ip address:$hack_ip" | xmessage -center -file - &> /dev/null
+		# your command here
 		reset=10
 	fi
 
 	if [[ $reset == "3" ]]; then 
 		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
 		echo -e "Someone is trying to login to your device, \nthere ip address:$hack_ip" | xmessage -center -file - &> /dev/null
+		# your command here
 		reset=10
 
 	fi

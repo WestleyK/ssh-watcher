@@ -4,16 +4,16 @@
 # created by Westley K
 # email westley@sylabs.io
 # date created: Jun 21, 2018
-# date updated: Jun 21, 2018
-# version-1.0
+# date updated: Jun 25, 2018
+# version-1.1
 
 
 
 # check if the script is running
-run=$( ps aux | grep ssh-watcher.sh | wc -l )
+run=$( ps aux | grep ssh-watcher-cli-v1.1.sh | wc -l )
 if [[ $run -ge "2" ]]; then
 	echo "script already running!"
-	echo "try: ps aux | grep ssh-watcher-cli-v1.0.sh"
+	echo "try: ps aux | grep ssh-watcher-cli-v1.1.sh"
 	exit
 fi
 
@@ -21,12 +21,12 @@ option=$1
 if [[ -n $option ]]; then
 	case $option in
 	-h | -help)
-			echo "usage: ./ssh-watcher-cli-v1.0.sh [-option]
+			echo "usage: ./ssh-watcher-cli-v1.1.sh [-option]
 	-h | -help | --help (display help menu)
 	-c | -check (check and test mode) (comming soon!)
+	-k (stop and kill all running ssh-watcher-cli-vX.X.sh script
 	-l (clear terminal before running script)
-	-o | -i (dont ALERT for logout)
-	-R (reboot this divice when ssh login or login attempt) (comming soon)"
+	-o (dont ALERT for logout)"
 		exit
 		;;
 	-c | -check)
@@ -35,17 +35,17 @@ if [[ -n $option ]]; then
 		;;
 	*l*)
 		clear
-		echo "running ssh-watcher-cli-v1.0.sh" 
+		echo "running ssh-watcher-cli-v1.1.sh" 
 		;&
-	*o* | *i*)
+	*o*)
 		no_logout=$"true"
 		;;
-	*R*)
+	-R)
 		echo "2this feature is comming soon! :P"
 		exit 
 		;;
 	*)
-		echo "option not found, try: ./ssh-watcher-cli-v1.0.sh -help"
+		echo "option not found, try: ./ssh-watcher-cli-v1.1.sh -help"
 		exit
 		;;
 	
@@ -95,21 +95,25 @@ while true; do
 	fi
 
 
+	# you can modify this to do somthing if someone ssh your divice
 	if [[ $reset == "1" ]]; then
-		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
-		echo "ALERT: someone is ssh-ing your devive, you should do somthing! there ip address:$hack_ip"
+		hack_ip=$( cat /var/log/auth.log | tail | grep -a 'from' | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		echo "ALERT: Someone is ssh-ing your devive, you should do somthing! there ip address:$hack_ip"
+		# your command here
 		reset=10
 	fi
 
 	if [[ $reset == "2" && $no_logout != "true" ]]; then
-		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
-		echo "ALERT: someone just stoped ssh-ing you device, you must be safe now. there ip address:$hack_ip"
+		hack_ip=$( cat /var/log/auth.log | tail | grep -a 'from' | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		echo "ALERT: Someone just stoped ssh-ing you device, you must be safe now. there ip address:$hack_ip"
+		# your command here
 		reset=10
 	fi
 
 	if [[ $reset == "3" ]]; then 
-		hack_ip=$( cat /var/log/auth.log | tail | grep -a pi\ from | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
+		hack_ip=$( cat /var/log/auth.log | tail | grep -a 'from' | tail -1 | sed 's/.*from //' | cut -f1 -d" " )
 		echo "ALERT: Someone is trying to login to your device, there ip address:$hack_ip"
+		# your command here
 		reset=10
 
 	fi
